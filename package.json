@@ -23,11 +23,15 @@
     "@types/express-fileupload": "^1.1.6",
     "@types/jsonwebtoken": "^8.3.0",
     "bcrypt": "^3.0.4",
+    "clean": "^4.0.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "global": "^4.4.0",
     "jsonwebtoken": "^8.5.0",
     "morgan": "^1.10.0",
     "mysql": "^2.16.0",
+    "ts": "^0.2.2",
+    "tsc": "^1.20150623.0",
     "typeorm": "^0.2.13"
   },
   "devDependencies": {

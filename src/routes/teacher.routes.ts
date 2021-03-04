@@ -5,7 +5,7 @@ import { logInUser } from "../helpers/auth.helpers";
 
 // services
 import UserService from "../services/user.service";
-import QuizQuestion from "src/models/quiz-question.model";
+import QuizQuestion from "../models/quiz-question.model";
 
 const router = express.Router();
 
