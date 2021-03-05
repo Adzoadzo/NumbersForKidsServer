@@ -11,6 +11,7 @@ export default class QuizService {
   public static async find(): Promise<Quiz[]> {
     return await Quiz.createQueryBuilder()
       .leftJoinAndSelect("Quiz.questions", "questions")
+      .leftJoinAndSelect("Quiz.results", "results")
       .leftJoinAndSelect("questions.answers", "answers")
       .getMany();
   }

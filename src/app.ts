@@ -14,6 +14,7 @@ import morgan from "morgan";
 import healthRouter from "./routes/healthcheck.routes";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.routes";
+import quizRouter from "./routes/quiz.routes";
 import teacherRouter from "./routes/teacher.routes";
 import meRouter from "./routes/me.routes";
 
@@ -47,6 +48,7 @@ app.use(morgan("dev"));
 // use routers
 app.use("/v1/auth", authRouter);
 app.use("/v1/users", tokenValidation, userRouter);
+app.use("/v1/quizzes", tokenValidation, quizRouter);
 app.use("/v1/teacher", tokenValidation, teacherAccessValidation, teacherRouter);
 app.use("/v1/me", tokenValidation, meRouter);
 app.use("/", healthRouter);

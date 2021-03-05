@@ -30,7 +30,7 @@ export default class Quiz extends BaseEntity {
   @JoinColumn()
   public questions?: QuizQuestion[];
 
-  @OneToMany((type) => QuizResult, (qr) => qr.quiz)
+  @OneToMany((type) => QuizResult, (qr) => qr.quiz, { eager: true })
   public results?: QuizResult[];
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
