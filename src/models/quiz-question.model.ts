@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToMany,
   ManyToOne,
   OneToMany,
@@ -20,12 +21,14 @@ export default class QuizQuestion extends BaseEntity {
   @Column({ length: 200 })
   public text: string;
 
-  @OneToMany((type) => Quiz, (q) => q.questions)
+  @ManyToOne((type) => Quiz, (q) => q.questions)
   public quiz?: Quiz;
 
-  @ManyToOne((type) => QuizQuestionAnswer, (qa) => qa.question, {
+  @OneToMany((type) => QuizQuestionAnswer, (qa) => qa.question, {
+    cascade: true,
     eager: true,
   })
+  @JoinColumn()
   public answers?: QuizQuestionAnswer[];
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

@@ -9,7 +9,10 @@ export default class QuizService {
    * @returns {Promise<Quiz[]>}
    */
   public static async find(): Promise<Quiz[]> {
-    return await Quiz.find();
+    return await Quiz.createQueryBuilder()
+      .leftJoinAndSelect("Quiz.questions", "questions")
+      .leftJoinAndSelect("questions.answers", "answers")
+      .getMany();
   }
 
   /**
@@ -25,7 +28,10 @@ export default class QuizService {
    * @returns {Promise<Quiz[]>}
    */
   public static async findOneBy(filter: any): Promise<Quiz> {
-    return await Quiz.findOne(filter);
+    return await Quiz.findOne({
+      ...filter,
+      relations: ["questions", "questions.answers"],
+    });
   }
 
   /**

@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -25,9 +26,8 @@ export default class Quiz extends BaseEntity {
   @Column({ nullable: true })
   public description: string;
 
-  @OneToMany((type) => QuizQuestion, (q) => q.quiz, {
-    eager: true,
-  })
+  @OneToMany((type) => QuizQuestion, (q) => q.quiz, { cascade: true })
+  @JoinColumn()
   public questions?: QuizQuestion[];
 
   @OneToMany((type) => QuizResult, (qr) => qr.quiz)

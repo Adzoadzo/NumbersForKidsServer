@@ -16,7 +16,7 @@ export default class QuizQuestionAnswer extends BaseEntity {
   @Column({ default: false })
   public correct: boolean;
 
-  @OneToMany((type) => QuizQuestion, (q) => q.answers)
+  @ManyToOne((type) => QuizQuestion, (q) => q.answers)
   public question: QuizQuestion;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
